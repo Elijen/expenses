@@ -1,0 +1,4 @@
+table.expenses-list td,
+table.expenses-list th {
+    text-align: right;
+}
