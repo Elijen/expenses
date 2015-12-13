@@ -28,6 +28,7 @@
     "angular-chartist.js": "^3.3.12",
     "angular-google-chart": "^0.1.0",
     "angular-mocks": "^1.4.7",
+    "angular-ui-bootstrap": "^0.14.3",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

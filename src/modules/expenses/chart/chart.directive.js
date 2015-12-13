@@ -4,6 +4,9 @@ module.exports = ChartDirective;
 
 ChartDirective.$inject = ['$timeout'];
 
+/**
+ * Directive rendering expenses into a chart
+ */
 function ChartDirective($timeout) {
     return {
         link: link,
@@ -28,11 +31,14 @@ function ChartDirective($timeout) {
     }
 
     function getChartistDataFromExpenses(expenses) {
+        var expensesReversed = expenses.slice().reverse();
         var labels = [];
         var values = [];
 
-        angular.forEach(expenses, function(expense){
-            labels.push(expense.date);
+        angular.forEach(expensesReversed, function(expense){
+            var label = expense.day ? expense.day + '/' + expense.month : expense.month + '/' + expense.year;
+
+            labels.push(label);
             values.push(expense.amount);
         });
 

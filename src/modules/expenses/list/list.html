@@ -1,20 +1,45 @@
-<table class="table table-bordered table-striped table-hover expenses-list">
+<table ng-if="view == 'default'" class="table table-bordered table-striped table-hover expenses-list">
   <thead>
-    <tr>
-      <th>#</th>
-      <th>Date</th>
-      <th>Amount</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
+  <tr>
+    <th>#</th>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Category</th>
+    <th>Note</th>
+    <th>Actions</th>
+  </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="expense in expenses">
-      <td>{{ expense.id }}</td>
-      <td>{{ expense.date }}</td>
-      <td>{{ expense.amount }}</td>
-      <td>{{ expense.categoryId }}</td>
-      <td>Remove | Edit</td>
-    </tr>
+  <tr ng-repeat="expense in expenses">
+    <td>{{ expense.id }}</td>
+    <td>{{ expense.day }}.{{ expense.month }}.{{ expense.year }}</td>
+    <td>{{ expense.amount }}</td>
+    <td>
+      <span expenses-category-label="expense.category_id"></span>
+    </td>
+    <td>
+      <span ng-if="expense.note">"{{ expense.note }}"</span>
+      <span ng-if="!expense.note" class="text-muted">-</span>
+    </td>
+    <td>
+      <a href ng-click="deleteExpense(expense)">Remove</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table ng-if="view == 'monthly'" class="table table-bordered table-striped table-hover expenses-list">
+  <thead>
+  <tr>
+    <th>Month</th>
+    <th>Count</th>
+    <th>Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="expense in expenses">
+    <td>{{ expense.month }}/{{ expense.year }}</td>
+    <td>{{ expense.count }}&times;</td>
+    <td>{{ expense.amount }}</td>
   </tbody>
 </table>

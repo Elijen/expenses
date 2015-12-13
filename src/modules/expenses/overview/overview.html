@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Expenses Overview</h1>
 
     <div class="row">
       <div class="col-md-12">
@@ -13,7 +12,26 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>Transactions</h2>
-    <div expenses-list="expenses"></div>
+    <h2>
+      Transactions
+
+      <div class="pull-right">
+        <button ng-if="showMonthly" ng-click="toggleMonthly()" class="btn btn-default">
+          <span class="glyphicon glyphicon-list"></span> List expenses
+        </button>
+        <button ng-if="!showMonthly" ng-click="toggleMonthly()" class="btn btn-default">
+          <span class="glyphicon glyphicon-calendar"></span> Show monthly
+        </button>
+        <button ng-click="manageCategories()" class="btn btn-default">
+          <span class="glyphicon glyphicon-cog"></span> Manage categories
+        </button>
+        <button ng-click="addExpense()" class="btn btn-success">
+          <span class="glyphicon glyphicon-plus"></span> Add expense
+        </button>
+      </div>
+    </h2>
+
+    <div ng-if="showMonthly" expenses-list="expenses" expenses-list-view="'monthly'"></div>
+    <div ng-if="!showMonthly" expenses-list="expenses"></div>
   </div>
 </div>

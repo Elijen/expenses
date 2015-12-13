@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h3 class="modal-title">Manage categories</h3>
+</div>
+<div class="modal-body">
+  <!-- Add new category -->
+  <form name="addCategoryForm">
+    <div class="form-group row">
+      <div class="col-md-9">
+        <input ng-model="newCategory.name" id="newCategory" type="text" placeholder="Name" class="form-control" ng-required="true">
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-success pull-right" ng-click="addCategory()" ng-disabled="!addCategoryForm.$valid">
+          Add category
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- List existing categories -->
+  <ul class="list-group">
+    <li ng-repeat="category in categories" class="list-group-item">
+      {{ category.name }}
+      <a href ng-click="deleteCategory(category)" class="pull-right">Remove</a>
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="close()">Close</button>
+</div>
